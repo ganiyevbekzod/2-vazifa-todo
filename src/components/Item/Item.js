@@ -14,7 +14,6 @@ export const Item=({text,id,isComplate,setTodos,todos})=>{
     const findedTodo=todos.find((todo)=> todo.id === TodoId);
         findedTodo.isComplate=!findedTodo.isComplate;
         setTodos([...todos])
-        console.log(todos);
     }
 
     return(
