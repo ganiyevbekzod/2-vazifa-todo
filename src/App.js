@@ -4,20 +4,20 @@ import { Item } from "./components/Item"
 import { useRef, useState } from "react"
 const App = () => {
 
-    const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos"))|| []);
+    const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
     const InputValue = useRef()
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        setTodos([...todos,{
-                id:todos.at(-1)?.id + 1 || 1,
-                isComplated: false,
-                text: InputValue.current.value,
+        setTodos([...todos, {
+            id: todos.at(-1)?.id + 1 || 1,
+            isComplated: false,
+            text: InputValue.current.value,
 
-            },])
+        },])
         InputValue.current.value = ""
     }
-    localStorage.setItem("todos",JSON.stringify(todos))
+    localStorage.setItem("todos", JSON.stringify(todos))
 
     return (
         <div className="container">
@@ -31,19 +31,19 @@ const App = () => {
             {
                 todos.length ? (
                     <List>
-                {
-                    todos.map((todo) => (
-                        <Item
-                        key={todo.id}
-                        todos={todos}
-                            text={todo.text}
-                            id={todo.id}
-                            isComplate={todo.isComplated}
-                            setTodos={setTodos} />
-                    ))
-                }
-            </List>
-                ) :(
+                        {
+                            todos.map((todo) => (
+                                <Item
+                                    key={todo.id}
+                                    todos={todos}
+                                    text={todo.text}
+                                    id={todo.id}
+                                    isComplate={todo.isComplate}
+                                    setTodos={setTodos} />
+                            ))
+                        }
+                    </List>
+                ) : (
                     <h2 className="text-center h2 mt-5 text-danger">Sizda hech qanday Todo mavjud emas</h2>
                 )
             }
