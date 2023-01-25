@@ -12,14 +12,15 @@ export const Item=({text,id,isComplate,setTodos,todos})=>{
     }
     const handleChange=(TodoId)=>{
     const findedTodo=todos.find((todo)=> todo.id === TodoId);
-        findedTodo.isComplate=!findedTodo.isComplate;
+    findedTodo.isComplate=!findedTodo.isComplate;
+    console.log(findedTodo);
         setTodos([...todos])
     }
 
     return(
         <li className="list-group-item d-flex align-items-center">
         <span>{id}.</span>
-        <input onChange={()=>handleChange(id)} checked={isComplate} className="form-check-input mx-3" type="checkbox"></input>
+        <input onChange={()=>handleChange(id)} checked={isComplate} className="form-check-input mx-3" type="checkbox"/>
         <strong className={isComplate ? "text-decoration-line-through text-success": ""}>{text}</strong>
         <button onClick={()=>EditTodo(id)} className="btn btn-warning ms-auto mx-3 ">EDIT</button>
         <button onClick={()=> DeleteTodo(id)} className="btn btn-danger">delete</button>
